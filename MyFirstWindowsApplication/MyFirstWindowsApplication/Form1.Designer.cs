@@ -34,7 +34,6 @@ namespace MyFirstWindowsApplication
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.refreshBtn = new System.Windows.Forms.Button();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.comPortBox = new System.Windows.Forms.ComboBox();
             this.baudRateBox = new System.Windows.Forms.ComboBox();
@@ -57,21 +56,13 @@ namespace MyFirstWindowsApplication
             this.advancedCommandBox = new System.Windows.Forms.ComboBox();
             this.commandTypeBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.functionTitle = new System.Windows.Forms.Label();
             this.functionLabel = new System.Windows.Forms.Label();
             this.parametersNameLabel = new System.Windows.Forms.Label();
             this.parametersLabel = new System.Windows.Forms.Label();
+            this.descriptionTitleLabel = new System.Windows.Forms.Label();
+            this.descriptionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // refreshBtn
-            // 
-            this.refreshBtn.Location = new System.Drawing.Point(12, 12);
-            this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(75, 23);
-            this.refreshBtn.TabIndex = 0;
-            this.refreshBtn.Text = "Refresh";
-            this.refreshBtn.UseVisualStyleBackColor = true;
-            this.refreshBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.refreshBtn_Click);
             // 
             // serialPort
             // 
@@ -79,16 +70,17 @@ namespace MyFirstWindowsApplication
             // 
             // comPortBox
             // 
-            this.comPortBox.Location = new System.Drawing.Point(93, 12);
+            this.comPortBox.Location = new System.Drawing.Point(12, 10);
             this.comPortBox.Name = "comPortBox";
             this.comPortBox.Size = new System.Drawing.Size(75, 21);
             this.comPortBox.TabIndex = 0;
             this.comPortBox.Text = "COM Port";
+            this.comPortBox.DropDown += new System.EventHandler(this.comPortBox_DropDown);
             // 
             // baudRateBox
             // 
             this.baudRateBox.FormattingEnabled = true;
-            this.baudRateBox.Location = new System.Drawing.Point(174, 12);
+            this.baudRateBox.Location = new System.Drawing.Point(93, 10);
             this.baudRateBox.Name = "baudRateBox";
             this.baudRateBox.Size = new System.Drawing.Size(78, 21);
             this.baudRateBox.TabIndex = 1;
@@ -96,7 +88,7 @@ namespace MyFirstWindowsApplication
             // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(259, 12);
+            this.connectButton.Location = new System.Drawing.Point(177, 8);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(75, 23);
             this.connectButton.TabIndex = 2;
@@ -121,6 +113,7 @@ namespace MyFirstWindowsApplication
             this.AT.Text = "AT";
             this.commandInformation.SetToolTip(this.AT, "Test if AT system works correctly");
             this.AT.UseVisualStyleBackColor = true;
+            this.AT.Click += new System.EventHandler(this.AT_Click);
             // 
             // label1
             // 
@@ -141,6 +134,7 @@ namespace MyFirstWindowsApplication
             this.ATRST.Text = "AT+RST";
             this.commandInformation.SetToolTip(this.ATRST, "Reset the module");
             this.ATRST.UseVisualStyleBackColor = true;
+            this.ATRST.Click += new System.EventHandler(this.ATRST_Click);
             // 
             // ATGMR
             // 
@@ -151,6 +145,7 @@ namespace MyFirstWindowsApplication
             this.ATGMR.Text = "AT+GMR";
             this.commandInformation.SetToolTip(this.ATGMR, "Print firmware version");
             this.ATGMR.UseVisualStyleBackColor = true;
+            this.ATGMR.Click += new System.EventHandler(this.ATGMR_Click);
             // 
             // ATEO
             // 
@@ -162,7 +157,7 @@ namespace MyFirstWindowsApplication
             this.ATEO.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.commandInformation.SetToolTip(this.ATEO, "Disable echo");
             this.ATEO.UseVisualStyleBackColor = true;
-            this.ATEO.Click += new System.EventHandler(this.button1_Click);
+            this.ATEO.Click += new System.EventHandler(this.ATEO_Click);
             // 
             // ATEI
             // 
@@ -173,6 +168,7 @@ namespace MyFirstWindowsApplication
             this.ATEI.Text = "ATE1";
             this.commandInformation.SetToolTip(this.ATEI, "Enable echo");
             this.ATEI.UseVisualStyleBackColor = true;
+            this.ATEI.Click += new System.EventHandler(this.ATEI_Click);
             // 
             // ATCWLAP
             // 
@@ -183,6 +179,7 @@ namespace MyFirstWindowsApplication
             this.ATCWLAP.Text = "AT+CWLAP";
             this.commandInformation.SetToolTip(this.ATCWLAP, "List available APs");
             this.ATCWLAP.UseVisualStyleBackColor = true;
+            this.ATCWLAP.Click += new System.EventHandler(this.ATCWLAP_Click);
             // 
             // ATCWQAP
             // 
@@ -193,6 +190,7 @@ namespace MyFirstWindowsApplication
             this.ATCWQAP.Text = "AT+CWQAP";
             this.commandInformation.SetToolTip(this.ATCWQAP, "Disconnect from AP");
             this.ATCWQAP.UseVisualStyleBackColor = true;
+            this.ATCWQAP.Click += new System.EventHandler(this.ATCWQAP_Click);
             // 
             // ATCWLIF
             // 
@@ -203,6 +201,7 @@ namespace MyFirstWindowsApplication
             this.ATCWLIF.Text = "AT+CWLIF";
             this.commandInformation.SetToolTip(this.ATCWLIF, "List connected clients");
             this.ATCWLIF.UseVisualStyleBackColor = true;
+            this.ATCWLIF.Click += new System.EventHandler(this.ATCWLIF_Click);
             // 
             // ATCIPSTATUS
             // 
@@ -213,6 +212,7 @@ namespace MyFirstWindowsApplication
             this.ATCIPSTATUS.Text = "AT+CIPSTATUS";
             this.commandInformation.SetToolTip(this.ATCIPSTATUS, "Connection information");
             this.ATCIPSTATUS.UseVisualStyleBackColor = true;
+            this.ATCIPSTATUS.Click += new System.EventHandler(this.ATCIPSTATUS_Click);
             // 
             // ATCIFSR
             // 
@@ -223,6 +223,7 @@ namespace MyFirstWindowsApplication
             this.ATCIFSR.Text = "AT+CIFSR";
             this.commandInformation.SetToolTip(this.ATCIFSR, "Get local IP address");
             this.ATCIFSR.UseVisualStyleBackColor = true;
+            this.ATCIFSR.Click += new System.EventHandler(this.ATCIFSR_Click);
             // 
             // label2
             // 
@@ -274,20 +275,21 @@ namespace MyFirstWindowsApplication
             this.label4.TabIndex = 19;
             this.label4.Text = "Command Type:";
             // 
-            // label5
+            // functionTitle
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 154);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Function:";
+            this.functionTitle.AutoSize = true;
+            this.functionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.functionTitle.Location = new System.Drawing.Point(12, 167);
+            this.functionTitle.Name = "functionTitle";
+            this.functionTitle.Size = new System.Drawing.Size(60, 13);
+            this.functionTitle.TabIndex = 20;
+            this.functionTitle.Text = "Function:";
+            this.functionTitle.Visible = false;
             // 
             // functionLabel
             // 
             this.functionLabel.AutoSize = true;
-            this.functionLabel.Location = new System.Drawing.Point(12, 167);
+            this.functionLabel.Location = new System.Drawing.Point(72, 167);
             this.functionLabel.Name = "functionLabel";
             this.functionLabel.Size = new System.Drawing.Size(71, 13);
             this.functionLabel.TabIndex = 21;
@@ -299,7 +301,7 @@ namespace MyFirstWindowsApplication
             this.parametersNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.parametersNameLabel.Location = new System.Drawing.Point(12, 180);
             this.parametersNameLabel.Name = "parametersNameLabel";
-            this.parametersNameLabel.Size = new System.Drawing.Size(71, 13);
+            this.parametersNameLabel.Size = new System.Drawing.Size(75, 13);
             this.parametersNameLabel.TabIndex = 0;
             this.parametersNameLabel.Text = "Parameters:";
             this.parametersNameLabel.Visible = false;
@@ -307,22 +309,45 @@ namespace MyFirstWindowsApplication
             // parametersLabel
             // 
             this.parametersLabel.AutoSize = true;
-            this.parametersLabel.Location = new System.Drawing.Point(12, 193);
+            this.parametersLabel.Location = new System.Drawing.Point(86, 180);
             this.parametersLabel.Name = "parametersLabel";
             this.parametersLabel.Size = new System.Drawing.Size(85, 13);
             this.parametersLabel.TabIndex = 22;
             this.parametersLabel.Text = "parametersLabel";
             this.parametersLabel.Visible = false;
             // 
+            // descriptionTitleLabel
+            // 
+            this.descriptionTitleLabel.AutoSize = true;
+            this.descriptionTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionTitleLabel.Location = new System.Drawing.Point(12, 154);
+            this.descriptionTitleLabel.Name = "descriptionTitleLabel";
+            this.descriptionTitleLabel.Size = new System.Drawing.Size(75, 13);
+            this.descriptionTitleLabel.TabIndex = 23;
+            this.descriptionTitleLabel.Text = "Description:";
+            this.descriptionTitleLabel.Visible = false;
+            // 
+            // descriptionLabel
+            // 
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Location = new System.Drawing.Point(86, 154);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(84, 13);
+            this.descriptionLabel.TabIndex = 24;
+            this.descriptionLabel.Text = "descriptionLabel";
+            this.descriptionLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 464);
+            this.Controls.Add(this.descriptionLabel);
+            this.Controls.Add(this.descriptionTitleLabel);
             this.Controls.Add(this.parametersLabel);
             this.Controls.Add(this.parametersNameLabel);
             this.Controls.Add(this.functionLabel);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.functionTitle);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.commandTypeBox);
             this.Controls.Add(this.advancedCommandBox);
@@ -343,7 +368,6 @@ namespace MyFirstWindowsApplication
             this.Controls.Add(this.connectButton);
             this.Controls.Add(this.baudRateBox);
             this.Controls.Add(this.comPortBox);
-            this.Controls.Add(this.refreshBtn);
             this.Name = "Form1";
             this.Text = "ESP8266 Commander";
             this.ResumeLayout(false);
@@ -354,11 +378,6 @@ namespace MyFirstWindowsApplication
         private void InitializeCommandList()
         {
             commandsGenerator.generateCommandsList(commandsList);
-        }
-
-        private void InitializePortBox()
-        {
-            comPortBox.Items.AddRange(SerialPort.GetPortNames());
         }
 
         private void InitializeBaudRateBox()
@@ -373,8 +392,6 @@ namespace MyFirstWindowsApplication
         }
 
         #endregion
-
-        private System.Windows.Forms.Button refreshBtn;
         private System.IO.Ports.SerialPort serialPort;
         private System.Windows.Forms.ComboBox comPortBox;
         private ComboBox baudRateBox;
@@ -397,10 +414,12 @@ namespace MyFirstWindowsApplication
         private ComboBox advancedCommandBox;
         private ComboBox commandTypeBox;
         private Label label4;
-        private Label label5;
+        private Label functionTitle;
         private Label functionLabel;
         private Label parametersNameLabel;
         private Label parametersLabel;
+        private Label descriptionTitleLabel;
+        private Label descriptionLabel;
     }
 }
 
