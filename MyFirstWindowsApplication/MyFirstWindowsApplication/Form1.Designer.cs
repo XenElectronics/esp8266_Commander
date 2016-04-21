@@ -53,9 +53,14 @@ namespace MyFirstWindowsApplication
             this.ATCIPSTATUS = new System.Windows.Forms.Button();
             this.ATCIFSR = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.advancedCommandBox = new System.Windows.Forms.ComboBox();
             this.commandTypeBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.functionLabel = new System.Windows.Forms.Label();
+            this.parametersNameLabel = new System.Windows.Forms.Label();
+            this.parametersLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // refreshBtn
@@ -67,6 +72,10 @@ namespace MyFirstWindowsApplication
             this.refreshBtn.Text = "Refresh";
             this.refreshBtn.UseVisualStyleBackColor = true;
             this.refreshBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.refreshBtn_Click);
+            // 
+            // serialPort
+            // 
+            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // comPortBox
             // 
@@ -93,6 +102,7 @@ namespace MyFirstWindowsApplication
             this.connectButton.TabIndex = 2;
             this.connectButton.Text = "Connect";
             this.connectButton.UseVisualStyleBackColor = true;
+            this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
             // 
             // feedBox
             // 
@@ -115,9 +125,10 @@ namespace MyFirstWindowsApplication
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Basic commands:";
             // 
@@ -216,22 +227,23 @@ namespace MyFirstWindowsApplication
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 13);
+            this.label2.Size = new System.Drawing.Size(131, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "Advanced commands:";
             // 
-            // label3
+            // statusLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(340, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 17);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Not connected";
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.statusLabel.ForeColor = System.Drawing.Color.Red;
+            this.statusLabel.Location = new System.Drawing.Point(340, 14);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(100, 17);
+            this.statusLabel.TabIndex = 16;
+            this.statusLabel.Text = "Not connected";
             // 
             // advancedCommandBox
             // 
@@ -241,6 +253,7 @@ namespace MyFirstWindowsApplication
             this.advancedCommandBox.Size = new System.Drawing.Size(121, 21);
             this.advancedCommandBox.TabIndex = 17;
             this.advancedCommandBox.Text = "Command";
+            this.advancedCommandBox.SelectedIndexChanged += new System.EventHandler(this.commandChange);
             // 
             // commandTypeBox
             // 
@@ -249,16 +262,71 @@ namespace MyFirstWindowsApplication
             this.commandTypeBox.Name = "commandTypeBox";
             this.commandTypeBox.Size = new System.Drawing.Size(98, 21);
             this.commandTypeBox.TabIndex = 18;
-            this.commandTypeBox.Text = "Command type";
+            this.commandTypeBox.Text = "Type";
+            this.commandTypeBox.SelectedIndexChanged += new System.EventHandler(this.commandTypeBox_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(145, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Command Type:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 154);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Function:";
+            // 
+            // functionLabel
+            // 
+            this.functionLabel.AutoSize = true;
+            this.functionLabel.Location = new System.Drawing.Point(12, 167);
+            this.functionLabel.Name = "functionLabel";
+            this.functionLabel.Size = new System.Drawing.Size(71, 13);
+            this.functionLabel.TabIndex = 21;
+            this.functionLabel.Text = "functionLabel";
+            this.functionLabel.Visible = false;
+            // 
+            // parametersNameLabel
+            // 
+            this.parametersNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parametersNameLabel.Location = new System.Drawing.Point(12, 180);
+            this.parametersNameLabel.Name = "parametersNameLabel";
+            this.parametersNameLabel.Size = new System.Drawing.Size(71, 13);
+            this.parametersNameLabel.TabIndex = 0;
+            this.parametersNameLabel.Text = "Parameters:";
+            this.parametersNameLabel.Visible = false;
+            // 
+            // parametersLabel
+            // 
+            this.parametersLabel.AutoSize = true;
+            this.parametersLabel.Location = new System.Drawing.Point(12, 193);
+            this.parametersLabel.Name = "parametersLabel";
+            this.parametersLabel.Size = new System.Drawing.Size(85, 13);
+            this.parametersLabel.TabIndex = 22;
+            this.parametersLabel.Text = "parametersLabel";
+            this.parametersLabel.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 464);
+            this.Controls.Add(this.parametersLabel);
+            this.Controls.Add(this.parametersNameLabel);
+            this.Controls.Add(this.functionLabel);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.commandTypeBox);
             this.Controls.Add(this.advancedCommandBox);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ATCIFSR);
             this.Controls.Add(this.ATCIPSTATUS);
@@ -285,531 +353,7 @@ namespace MyFirstWindowsApplication
 
         private void InitializeCommandList()
         {
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+GSLP",
-                    types = new List<type> { new type(){ 
-                        variant = commandType.Set, parameters = new List<parameter>(){ 
-                            new parameter(){ name = "time"}
-                            } 
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CWMODE",
-                    types = new List<type> { new type(){ 
-                        variant = commandType.Test, 
-                        description = "List valid modes."
-                        },
-
-                        new type(){ 
-                            variant = commandType.Query, 
-                            description = "Query AP’s info which is connected by ESP8266.",
-                            parameters = new List<parameter>(){
-                                new parameter(){ 
-                                    name = "mode",
-                                    description = "An integer designating the mode of operation either 1, 2, or 3./n1 = Station mode (client)/n2 = AP mode (host)/n3 = AP + Station mode",
-                                }
-                            }
-                        },
-
-                        new type(){ 
-                            variant = commandType.Execute,
-                            description = "Set AP’s info which will be connect by ESP8266.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "mode",
-                                    description = "An integer designating the mode of operation either 1, 2, or 3./n1 = Station mode (client)/n2 = AP mode (host)/n3 = AP + Station mode",
-                                }
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command() 
-                { 
-                    name = "AT+CWJAP",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = "Prints the SSID of Access Point ESP8266 is connected to."
-                        },
-
-                        new type(){
-                            variant = commandType.Execute,
-                            description = "Commands ESP8266 to connect a SSID with supplied password.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "ssid",
-                                    description = "String, AP’s SSID" 
-                                },
-
-                                new parameter(){
-                                    name = "pwd",
-                                    description = "String, not longer than 64 characters"
-                                }
-                            }
-                        }
-                    }                
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CWLAP",
-                    types = new List<type> { 
-
-                        /*new type(){ //Not sure if works
-                            variant = commandType.Set,
-                            description = "Search available APs with specific conditions.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "ssid",
-                                    description = "String, SSID of AP."
-                                },
-
-                                new parameter(){
-                                    name = "mac",
-                                    description = "String, MAC address."
-                                },
-
-                                new parameter(){
-                                    name = "ch",
-                                    description = ""
-                                }
-                            }
-                        },*/
-
-                        new type(){
-                            variant = commandType.Execute,
-                            description = "Lists available Access Points.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "ecn",
-                                    description = "0 = OPEN/n1 = WEP/n2 = WPA_PSK/n3 = WPA2_PSK/n4 = WPA_WPA2_PSK"
-                                },
-
-                                new parameter(){
-                                    name = "ssid",
-                                    description = "String, SSID of AP."
-                                },
-
-                                new parameter(){
-                                    name = "rssi",
-                                    description = "Signal strength."
-                                },
-
-                                new parameter(){
-                                    name = "mac",
-                                    description = "String, MAC address."
-                                },
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CWSAP",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = "Query configuration of ESP8266 softAP mode."
-                        },
-
-                        new type(){
-                            variant = commandType.Set,
-                            description = "",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "ssid",
-                                    description = "String, ESP8266’s softAP SSID."
-                                },
-
-                                new parameter(){
-                                    name = "pwd",
-                                    description = "String, Password, no longer than 64 characters."
-                                },
-
-                                new parameter(){
-                                    name = "ch",
-                                    description = "Channel id."
-                                },
-
-                                new parameter(){
-                                    name = "ecn",
-                                    description = "0 = OPEN/n2 = WPA_PSK/n3 = WPA2_PSK/n4 = WPA_WPA2_PSK"
-                                },
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CWDHCP",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = "Query configuration of ESP8266 softAP mode."
-                        },
-
-                        new type(){
-                            variant = commandType.Set,
-                            description = "Set configuration of softAP mode.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "ssid",
-                                    description = "String, ESP8266’s softAP SSID."
-                                },
-
-                                new parameter(){
-                                    name = "pwd",
-                                    description = "String, Password, no longer than 64 characters."
-                                },
-
-                                new parameter(){
-                                    name = "ch",
-                                    description = "Channel id."
-                                },
-
-                                new parameter(){
-                                    name = "ecn",
-                                    description = "0 = OPEN/n2 = WPA_PSK/n3 = WPA2_PSK/n4 = WPA_WPA2_PSK"
-                                }
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPSTAMAC",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = "Print current MAC ESP8266’s address."
-                        },
-
-                        new type(){
-                            variant = commandType.Execute,
-                            description = "Set ESP8266’s MAC address.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "mac",
-                                    description = "String, MAC address of the ESP8266 station."
-                                }
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPAPMAC",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = "Get MAC address of ESP8266 softAP."
-                        },
-
-                        new type(){
-                            variant = commandType.Execute,
-                            description = "Set mac of ESP8266 softAP.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "mac",
-                                    description = "String, MAC address of the ESP8266 station."
-                                }
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPSTA",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = "Get IP address of ESP8266 station."
-                        },
-
-                        new type(){
-                            variant = commandType.Execute,
-                            description = "Set ip address of ESP8266 station.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "ip",
-                                    description = "String, ip address of the ESP8266 station."
-                                }
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPAP",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = "Get ip address of ESP8266 softAP."
-                        },
-
-                        new type(){
-                            variant = commandType.Execute,
-                            description = "Set ip address of ESP8266 softAP.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "ip",
-                                    description = "String, ip address of ESP8266 softAP."
-                                }
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPSTART",
-                    types = new List<type> { 
-
-                        new type(){
-                            variant = commandType.Set,
-                            description = "Start a connection as client.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "id",
-                                    description = "0-4, id of connection"
-                                },
-
-                                new parameter(){
-                                    name = "type",
-                                    description = "String, “TCP” or “UDP”"
-                                },
-
-                                new parameter(){
-                                    name = "addr",
-                                    description = "String, remote IP"
-                                },
-
-                                new parameter(){
-                                    name = "port",
-                                    description = "String, remote port"
-                                }
-                            }
-                        },
-
-                        new type(){
-                            variant = commandType.Test,
-                            description = "List possible command variations."
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPSEND",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Test,
-                        },
-
-                        new type(){
-                            variant = commandType.Set,
-                            description = "Set length of the data that will be sent. For normal send.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "id",
-                                    description = "ID no. of transmit connection"
-                                },
-
-                                new parameter(){
-                                    name = "length",
-                                    description = "data length, MAX 2048 bytes"
-                                }
-                            }
-                        },
-
-                        new type(){
-                            variant = commandType.Execute,
-                            description = "Send data. For unvarnished transmission mode."
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPCLOSE",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Test
-                        },
-
-                        new type(){
-                            variant = commandType.Set,
-                            description = "Close TCP or UDP connection (Multiple connection mode).",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "id",
-                                    description = "ID no. of connection to close, when id=5, all connections will be closed."
-                                }
-                            }
-                        },
-
-                        new type(){
-                            variant = commandType.Execute,
-                            description = "Close TCP or UDP connection (Single connection mode).",
-                            parameters = new List<parameter>(){
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPMUX",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = "Print current multiplex mode.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "mode",
-                                    description = "0: Single connection/n1: Multiple connections (MAX 4)"
-                                }
-                            }
-                        },
-
-                        new type(){
-                            variant = commandType.Set,
-                            description = "Enable / disable multiplex mode (up to 4 conenctions).",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "mode",
-                                    description = "0: Single connection/n1: Multiple connections (MAX 4)"
-                                }
-                            }
-                        }
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPSERVER",
-                    types = new List<type> { 
-
-                        new type(){
-                            variant = commandType.Set,
-                            description = "Configure ESP8266 as server.",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "mode",
-                                    description = "0: Delete server (need to follow by restart)/n1:	Create server"
-                                },
-
-                                new parameter(){
-                                    name = "port",
-                                    description = "port number, default is 333"
-                                }
-                            }
-                        },
-                    }
-                }
-            );
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CIPMODE",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = ""
-                        },
-
-                        new type(){
-                            variant = commandType.Set,
-                            description = "",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "",
-                                    description = ""
-                                }
-                            }
-                        },
-                    }
-                }
-            );
-
-            commandsList.Add(new command { name = "AT+CIPMODE" });
-            commandsList.Add(new command { name = "AT+CIPSTO" });
-
-            commandsList.Add(
-                new command()
-                {
-                    name = "AT+CWJAP",
-                    types = new List<type> { 
-                        new type(){
-                            variant = commandType.Query,
-                            description = ""
-                        },
-
-                        new type(){
-                            variant = commandType.Set,
-                            description = "",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "",
-                                    description = ""
-                                }
-                            }
-                        },
-
-                        new type(){
-                            variant = commandType.Execute,
-                            description = "",
-                            parameters = new List<parameter>(){
-                                new parameter(){
-                                    name = "",
-                                    description = ""
-                                }
-                            }
-                        }
-                    }
-                }
-            );
+            commandsGenerator.generateCommandsList(commandsList);
         }
 
         private void InitializePortBox()
@@ -849,9 +393,14 @@ namespace MyFirstWindowsApplication
         private Button ATCIPSTATUS;
         private Button ATCIFSR;
         private Label label2;
-        private Label label3;
+        private Label statusLabel;
         private ComboBox advancedCommandBox;
         private ComboBox commandTypeBox;
+        private Label label4;
+        private Label label5;
+        private Label functionLabel;
+        private Label parametersNameLabel;
+        private Label parametersLabel;
     }
 }
 

@@ -1,0 +1,9 @@
+C:\Users\Danius\Documents\Visual Studio 2015\Projects\esp8266Commander\esp8266Commander\MyFirstWindowsApplication\MyFirstWindowsApplication\bin\Debug\MyFirstWindowsApplication.exe.config
+C:\Users\Danius\Documents\Visual Studio 2015\Projects\esp8266Commander\esp8266Commander\MyFirstWindowsApplication\MyFirstWindowsApplication\obj\Debug\MyFirstWindowsApplication.csprojResolveAssemblyReference.cache
+C:\Users\Danius\Documents\Visual Studio 2015\Projects\esp8266Commander\esp8266Commander\MyFirstWindowsApplication\MyFirstWindowsApplication\obj\Debug\MyFirstWindowsApplication.Form1.resources
+C:\Users\Danius\Documents\Visual Studio 2015\Projects\esp8266Commander\esp8266Commander\MyFirstWindowsApplication\MyFirstWindowsApplication\obj\Debug\MyFirstWindowsApplication.Properties.Resources.resources
+C:\Users\Danius\Documents\Visual Studio 2015\Projects\esp8266Commander\esp8266Commander\MyFirstWindowsApplication\MyFirstWindowsApplication\obj\Debug\MyFirstWindowsApplication.csproj.GenerateResource.Cache
+C:\Users\Danius\Documents\Visual Studio 2015\Projects\esp8266Commander\esp8266Commander\MyFirstWindowsApplication\MyFirstWindowsApplication\bin\Debug\MyFirstWindowsApplication.exe
+C:\Users\Danius\Documents\Visual Studio 2015\Projects\esp8266Commander\esp8266Commander\MyFirstWindowsApplication\MyFirstWindowsApplication\bin\Debug\MyFirstWindowsApplication.pdb
+C:\Users\Danius\Documents\Visual Studio 2015\Projects\esp8266Commander\esp8266Commander\MyFirstWindowsApplication\MyFirstWindowsApplication\obj\Debug\MyFirstWindowsApplication.exe
+C:\Users\Danius\Documents\Visual Studio 2015\Projects\esp8266Commander\esp8266Commander\MyFirstWindowsApplication\MyFirstWindowsApplication\obj\Debug\MyFirstWindowsApplication.pdb
