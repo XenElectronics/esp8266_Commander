@@ -34,6 +34,7 @@ namespace esp8266Commander
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(param1));
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.comPortBox = new System.Windows.Forms.ComboBox();
             this.baudRateBox = new System.Windows.Forms.ComboBox();
@@ -421,6 +422,7 @@ namespace esp8266Commander
             this.Controls.Add(this.connectButton);
             this.Controls.Add(this.baudRateBox);
             this.Controls.Add(this.comPortBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "param1";
             this.Text = "ESP8266 Commander v1.0";
             this.ResumeLayout(false);
