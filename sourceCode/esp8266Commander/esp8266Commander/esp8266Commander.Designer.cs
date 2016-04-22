@@ -79,11 +79,10 @@ namespace esp8266Commander
             // 
             // comPortBox
             // 
-            this.comPortBox.ItemHeight = 16;
-            this.comPortBox.Location = new System.Drawing.Point(13, 12);
-            this.comPortBox.Margin = new System.Windows.Forms.Padding(4);
+            this.comPortBox.ItemHeight = 13;
+            this.comPortBox.Location = new System.Drawing.Point(10, 10);
             this.comPortBox.Name = "comPortBox";
-            this.comPortBox.Size = new System.Drawing.Size(99, 24);
+            this.comPortBox.Size = new System.Drawing.Size(75, 21);
             this.comPortBox.TabIndex = 0;
             this.comPortBox.Text = "COM Port";
             this.comPortBox.DropDown += new System.EventHandler(this.comPortBox_DropDown);
@@ -92,20 +91,18 @@ namespace esp8266Commander
             // 
             this.baudRateBox.DropDownWidth = 80;
             this.baudRateBox.FormattingEnabled = true;
-            this.baudRateBox.ItemHeight = 16;
-            this.baudRateBox.Location = new System.Drawing.Point(120, 12);
-            this.baudRateBox.Margin = new System.Windows.Forms.Padding(4);
+            this.baudRateBox.ItemHeight = 13;
+            this.baudRateBox.Location = new System.Drawing.Point(90, 10);
             this.baudRateBox.Name = "baudRateBox";
-            this.baudRateBox.Size = new System.Drawing.Size(105, 24);
+            this.baudRateBox.Size = new System.Drawing.Size(80, 21);
             this.baudRateBox.TabIndex = 1;
             this.baudRateBox.Text = "Baud Rate";
             // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(233, 11);
-            this.connectButton.Margin = new System.Windows.Forms.Padding(4);
+            this.connectButton.Location = new System.Drawing.Point(175, 9);
             this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(100, 28);
+            this.connectButton.Size = new System.Drawing.Size(75, 23);
             this.connectButton.TabIndex = 2;
             this.connectButton.Text = "Connect";
             this.connectButton.UseVisualStyleBackColor = true;
@@ -113,19 +110,17 @@ namespace esp8266Commander
             // 
             // feedBox
             // 
-            this.feedBox.Location = new System.Drawing.Point(13, 332);
-            this.feedBox.Margin = new System.Windows.Forms.Padding(4);
+            this.feedBox.Location = new System.Drawing.Point(10, 289);
             this.feedBox.Name = "feedBox";
-            this.feedBox.Size = new System.Drawing.Size(559, 128);
+            this.feedBox.Size = new System.Drawing.Size(420, 130);
             this.feedBox.TabIndex = 3;
             this.feedBox.Text = "";
             // 
             // AT
             // 
-            this.AT.Location = new System.Drawing.Point(13, 74);
-            this.AT.Margin = new System.Windows.Forms.Padding(4);
+            this.AT.Location = new System.Drawing.Point(10, 60);
             this.AT.Name = "AT";
-            this.AT.Size = new System.Drawing.Size(40, 31);
+            this.AT.Size = new System.Drawing.Size(30, 25);
             this.AT.TabIndex = 4;
             this.AT.Text = "AT";
             this.commandInformation.SetToolTip(this.AT, "Test if AT system works correctly");
@@ -136,20 +131,18 @@ namespace esp8266Commander
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 49);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(7, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 17);
+            this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Basic commands:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ATRST
             // 
-            this.ATRST.Location = new System.Drawing.Point(60, 74);
-            this.ATRST.Margin = new System.Windows.Forms.Padding(4);
+            this.ATRST.Location = new System.Drawing.Point(45, 60);
             this.ATRST.Name = "ATRST";
-            this.ATRST.Size = new System.Drawing.Size(80, 31);
+            this.ATRST.Size = new System.Drawing.Size(60, 25);
             this.ATRST.TabIndex = 6;
             this.ATRST.Text = "AT+RST";
             this.commandInformation.SetToolTip(this.ATRST, "Reset the module");
@@ -158,10 +151,9 @@ namespace esp8266Commander
             // 
             // ATGMR
             // 
-            this.ATGMR.Location = new System.Drawing.Point(147, 74);
-            this.ATGMR.Margin = new System.Windows.Forms.Padding(4);
+            this.ATGMR.Location = new System.Drawing.Point(110, 60);
             this.ATGMR.Name = "ATGMR";
-            this.ATGMR.Size = new System.Drawing.Size(80, 31);
+            this.ATGMR.Size = new System.Drawing.Size(60, 25);
             this.ATGMR.TabIndex = 7;
             this.ATGMR.Text = "AT+GMR";
             this.commandInformation.SetToolTip(this.ATGMR, "Print firmware version");
@@ -170,10 +162,9 @@ namespace esp8266Commander
             // 
             // ATEO
             // 
-            this.ATEO.Location = new System.Drawing.Point(233, 74);
-            this.ATEO.Margin = new System.Windows.Forms.Padding(4);
+            this.ATEO.Location = new System.Drawing.Point(175, 60);
             this.ATEO.Name = "ATEO";
-            this.ATEO.Size = new System.Drawing.Size(60, 31);
+            this.ATEO.Size = new System.Drawing.Size(45, 25);
             this.ATEO.TabIndex = 8;
             this.ATEO.Text = "ATE0";
             this.commandInformation.SetToolTip(this.ATEO, "Disable echo");
@@ -182,10 +173,9 @@ namespace esp8266Commander
             // 
             // ATEI
             // 
-            this.ATEI.Location = new System.Drawing.Point(300, 74);
-            this.ATEI.Margin = new System.Windows.Forms.Padding(4);
+            this.ATEI.Location = new System.Drawing.Point(225, 60);
             this.ATEI.Name = "ATEI";
-            this.ATEI.Size = new System.Drawing.Size(60, 31);
+            this.ATEI.Size = new System.Drawing.Size(45, 25);
             this.ATEI.TabIndex = 9;
             this.ATEI.Text = "ATE1";
             this.commandInformation.SetToolTip(this.ATEI, "Enable echo");
@@ -194,10 +184,9 @@ namespace esp8266Commander
             // 
             // ATCWLAP
             // 
-            this.ATCWLAP.Location = new System.Drawing.Point(367, 74);
-            this.ATCWLAP.Margin = new System.Windows.Forms.Padding(4);
+            this.ATCWLAP.Location = new System.Drawing.Point(275, 60);
             this.ATCWLAP.Name = "ATCWLAP";
-            this.ATCWLAP.Size = new System.Drawing.Size(100, 31);
+            this.ATCWLAP.Size = new System.Drawing.Size(75, 25);
             this.ATCWLAP.TabIndex = 10;
             this.ATCWLAP.Text = "AT+CWLAP";
             this.commandInformation.SetToolTip(this.ATCWLAP, "List available APs");
@@ -206,10 +195,9 @@ namespace esp8266Commander
             // 
             // ATCWQAP
             // 
-            this.ATCWQAP.Location = new System.Drawing.Point(473, 74);
-            this.ATCWQAP.Margin = new System.Windows.Forms.Padding(4);
+            this.ATCWQAP.Location = new System.Drawing.Point(355, 60);
             this.ATCWQAP.Name = "ATCWQAP";
-            this.ATCWQAP.Size = new System.Drawing.Size(100, 31);
+            this.ATCWQAP.Size = new System.Drawing.Size(75, 25);
             this.ATCWQAP.TabIndex = 11;
             this.ATCWQAP.Text = "AT+CWQAP";
             this.commandInformation.SetToolTip(this.ATCWQAP, "Disconnect from AP");
@@ -218,10 +206,9 @@ namespace esp8266Commander
             // 
             // ATCWLIF
             // 
-            this.ATCWLIF.Location = new System.Drawing.Point(13, 111);
-            this.ATCWLIF.Margin = new System.Windows.Forms.Padding(4);
+            this.ATCWLIF.Location = new System.Drawing.Point(10, 90);
             this.ATCWLIF.Name = "ATCWLIF";
-            this.ATCWLIF.Size = new System.Drawing.Size(100, 31);
+            this.ATCWLIF.Size = new System.Drawing.Size(75, 25);
             this.ATCWLIF.TabIndex = 12;
             this.ATCWLIF.Text = "AT+CWLIF";
             this.commandInformation.SetToolTip(this.ATCWLIF, "List connected clients");
@@ -230,10 +217,9 @@ namespace esp8266Commander
             // 
             // ATCIPSTATUS
             // 
-            this.ATCIPSTATUS.Location = new System.Drawing.Point(120, 111);
-            this.ATCIPSTATUS.Margin = new System.Windows.Forms.Padding(4);
+            this.ATCIPSTATUS.Location = new System.Drawing.Point(90, 90);
             this.ATCIPSTATUS.Name = "ATCIPSTATUS";
-            this.ATCIPSTATUS.Size = new System.Drawing.Size(133, 31);
+            this.ATCIPSTATUS.Size = new System.Drawing.Size(100, 25);
             this.ATCIPSTATUS.TabIndex = 13;
             this.ATCIPSTATUS.Text = "AT+CIPSTATUS";
             this.commandInformation.SetToolTip(this.ATCIPSTATUS, "Connection information");
@@ -242,10 +228,9 @@ namespace esp8266Commander
             // 
             // ATCIFSR
             // 
-            this.ATCIFSR.Location = new System.Drawing.Point(260, 111);
-            this.ATCIFSR.Margin = new System.Windows.Forms.Padding(4);
+            this.ATCIFSR.Location = new System.Drawing.Point(195, 90);
             this.ATCIFSR.Name = "ATCIFSR";
-            this.ATCIFSR.Size = new System.Drawing.Size(100, 31);
+            this.ATCIFSR.Size = new System.Drawing.Size(75, 25);
             this.ATCIFSR.TabIndex = 14;
             this.ATCIFSR.Text = "AT+CIFSR";
             this.commandInformation.SetToolTip(this.ATCIFSR, "Get local IP address");
@@ -256,10 +241,9 @@ namespace esp8266Commander
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 148);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(7, 120);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(165, 17);
+            this.label2.Size = new System.Drawing.Size(131, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "Advanced commands:";
             // 
@@ -268,10 +252,9 @@ namespace esp8266Commander
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             this.statusLabel.ForeColor = System.Drawing.Color.Red;
-            this.statusLabel.Location = new System.Drawing.Point(427, 12);
-            this.statusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.statusLabel.Location = new System.Drawing.Point(320, 10);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(139, 22);
+            this.statusLabel.Size = new System.Drawing.Size(113, 17);
             this.statusLabel.TabIndex = 16;
             this.statusLabel.Text = "Not connected";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -279,10 +262,9 @@ namespace esp8266Commander
             // advancedCommandBox
             // 
             this.advancedCommandBox.FormattingEnabled = true;
-            this.advancedCommandBox.Location = new System.Drawing.Point(13, 172);
-            this.advancedCommandBox.Margin = new System.Windows.Forms.Padding(4);
+            this.advancedCommandBox.Location = new System.Drawing.Point(10, 140);
             this.advancedCommandBox.Name = "advancedCommandBox";
-            this.advancedCommandBox.Size = new System.Drawing.Size(139, 24);
+            this.advancedCommandBox.Size = new System.Drawing.Size(105, 21);
             this.advancedCommandBox.TabIndex = 17;
             this.advancedCommandBox.Text = "Command";
             this.advancedCommandBox.SelectedIndexChanged += new System.EventHandler(this.commandChange);
@@ -290,10 +272,9 @@ namespace esp8266Commander
             // commandTypeBox
             // 
             this.commandTypeBox.FormattingEnabled = true;
-            this.commandTypeBox.Location = new System.Drawing.Point(160, 172);
-            this.commandTypeBox.Margin = new System.Windows.Forms.Padding(4);
+            this.commandTypeBox.Location = new System.Drawing.Point(120, 140);
             this.commandTypeBox.Name = "commandTypeBox";
-            this.commandTypeBox.Size = new System.Drawing.Size(92, 24);
+            this.commandTypeBox.Size = new System.Drawing.Size(70, 21);
             this.commandTypeBox.TabIndex = 18;
             this.commandTypeBox.Text = "Type";
             this.commandTypeBox.SelectedIndexChanged += new System.EventHandler(this.commandTypeBox_SelectedIndexChanged);
@@ -302,10 +283,9 @@ namespace esp8266Commander
             // 
             this.functionTitle.AutoSize = true;
             this.functionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.functionTitle.Location = new System.Drawing.Point(9, 203);
-            this.functionTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.functionTitle.Location = new System.Drawing.Point(7, 165);
             this.functionTitle.Name = "functionTitle";
-            this.functionTitle.Size = new System.Drawing.Size(75, 17);
+            this.functionTitle.Size = new System.Drawing.Size(60, 13);
             this.functionTitle.TabIndex = 20;
             this.functionTitle.Text = "Function:";
             this.functionTitle.Visible = false;
@@ -313,10 +293,9 @@ namespace esp8266Commander
             // functionLabel
             // 
             this.functionLabel.AutoSize = true;
-            this.functionLabel.Location = new System.Drawing.Point(89, 203);
-            this.functionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.functionLabel.Location = new System.Drawing.Point(67, 165);
             this.functionLabel.Name = "functionLabel";
-            this.functionLabel.Size = new System.Drawing.Size(93, 17);
+            this.functionLabel.Size = new System.Drawing.Size(71, 13);
             this.functionLabel.TabIndex = 21;
             this.functionLabel.Text = "functionLabel";
             this.functionLabel.Visible = false;
@@ -324,10 +303,9 @@ namespace esp8266Commander
             // parametersNameLabel
             // 
             this.parametersNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parametersNameLabel.Location = new System.Drawing.Point(9, 240);
-            this.parametersNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.parametersNameLabel.Location = new System.Drawing.Point(7, 195);
             this.parametersNameLabel.Name = "parametersNameLabel";
-            this.parametersNameLabel.Size = new System.Drawing.Size(100, 16);
+            this.parametersNameLabel.Size = new System.Drawing.Size(75, 13);
             this.parametersNameLabel.TabIndex = 0;
             this.parametersNameLabel.Text = "Parameters:";
             this.parametersNameLabel.Visible = false;
@@ -335,10 +313,9 @@ namespace esp8266Commander
             // parametersLabel
             // 
             this.parametersLabel.AutoSize = true;
-            this.parametersLabel.Location = new System.Drawing.Point(109, 240);
-            this.parametersLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.parametersLabel.Location = new System.Drawing.Point(82, 195);
             this.parametersLabel.Name = "parametersLabel";
-            this.parametersLabel.Size = new System.Drawing.Size(115, 17);
+            this.parametersLabel.Size = new System.Drawing.Size(85, 13);
             this.parametersLabel.TabIndex = 22;
             this.parametersLabel.Text = "parametersLabel";
             this.parametersLabel.Visible = false;
@@ -347,10 +324,9 @@ namespace esp8266Commander
             // 
             this.responseTitle.AutoSize = true;
             this.responseTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.responseTitle.Location = new System.Drawing.Point(9, 222);
-            this.responseTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.responseTitle.Location = new System.Drawing.Point(7, 180);
             this.responseTitle.Name = "responseTitle";
-            this.responseTitle.Size = new System.Drawing.Size(85, 17);
+            this.responseTitle.Size = new System.Drawing.Size(67, 13);
             this.responseTitle.TabIndex = 23;
             this.responseTitle.Text = "Response:";
             this.responseTitle.Visible = false;
@@ -358,10 +334,9 @@ namespace esp8266Commander
             // responseLabel
             // 
             this.responseLabel.AutoSize = true;
-            this.responseLabel.Location = new System.Drawing.Point(97, 222);
-            this.responseLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.responseLabel.Location = new System.Drawing.Point(73, 180);
             this.responseLabel.Name = "responseLabel";
-            this.responseLabel.Size = new System.Drawing.Size(102, 17);
+            this.responseLabel.Size = new System.Drawing.Size(76, 13);
             this.responseLabel.TabIndex = 24;
             this.responseLabel.Text = "responseLabel";
             this.responseLabel.Visible = false;
@@ -369,10 +344,9 @@ namespace esp8266Commander
             // paramBox1
             // 
             this.paramBox1.Enabled = false;
-            this.paramBox1.Location = new System.Drawing.Point(260, 172);
-            this.paramBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.paramBox1.Location = new System.Drawing.Point(195, 140);
             this.paramBox1.Name = "paramBox1";
-            this.paramBox1.Size = new System.Drawing.Size(52, 22);
+            this.paramBox1.Size = new System.Drawing.Size(40, 20);
             this.paramBox1.TabIndex = 25;
             this.paramBox1.Enter += new System.EventHandler(this.paramBox1_Enter);
             this.paramBox1.Leave += new System.EventHandler(this.paramBox1_Leave);
@@ -380,10 +354,9 @@ namespace esp8266Commander
             // paramBox2
             // 
             this.paramBox2.Enabled = false;
-            this.paramBox2.Location = new System.Drawing.Point(320, 172);
-            this.paramBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.paramBox2.Location = new System.Drawing.Point(240, 140);
             this.paramBox2.Name = "paramBox2";
-            this.paramBox2.Size = new System.Drawing.Size(52, 22);
+            this.paramBox2.Size = new System.Drawing.Size(40, 20);
             this.paramBox2.TabIndex = 26;
             this.paramBox2.Enter += new System.EventHandler(this.paramBox2_Enter);
             this.paramBox2.Leave += new System.EventHandler(this.paramBox2_Leave);
@@ -391,10 +364,9 @@ namespace esp8266Commander
             // paramBox3
             // 
             this.paramBox3.Enabled = false;
-            this.paramBox3.Location = new System.Drawing.Point(380, 172);
-            this.paramBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.paramBox3.Location = new System.Drawing.Point(285, 140);
             this.paramBox3.Name = "paramBox3";
-            this.paramBox3.Size = new System.Drawing.Size(52, 22);
+            this.paramBox3.Size = new System.Drawing.Size(40, 20);
             this.paramBox3.TabIndex = 27;
             this.paramBox3.Enter += new System.EventHandler(this.paramBox3_Enter);
             this.paramBox3.Leave += new System.EventHandler(this.paramBox3_Leave);
@@ -402,20 +374,18 @@ namespace esp8266Commander
             // paramBox4
             // 
             this.paramBox4.Enabled = false;
-            this.paramBox4.Location = new System.Drawing.Point(440, 172);
-            this.paramBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.paramBox4.Location = new System.Drawing.Point(330, 140);
             this.paramBox4.Name = "paramBox4";
-            this.paramBox4.Size = new System.Drawing.Size(52, 22);
+            this.paramBox4.Size = new System.Drawing.Size(40, 20);
             this.paramBox4.TabIndex = 28;
             this.paramBox4.Enter += new System.EventHandler(this.paramBox4_Enter);
             this.paramBox4.Leave += new System.EventHandler(this.paramBox4_Leave);
             // 
             // executeBtn
             // 
-            this.executeBtn.Location = new System.Drawing.Point(500, 171);
-            this.executeBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.executeBtn.Location = new System.Drawing.Point(375, 139);
             this.executeBtn.Name = "executeBtn";
-            this.executeBtn.Size = new System.Drawing.Size(73, 27);
+            this.executeBtn.Size = new System.Drawing.Size(55, 22);
             this.executeBtn.TabIndex = 29;
             this.executeBtn.Text = "Execute";
             this.executeBtn.UseVisualStyleBackColor = true;
@@ -423,9 +393,10 @@ namespace esp8266Commander
             // 
             // ClearFeedScreenBtn
             // 
-            this.ClearFeedScreenBtn.Location = new System.Drawing.Point(12, 295);
+            this.ClearFeedScreenBtn.Location = new System.Drawing.Point(10, 260);
+            this.ClearFeedScreenBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ClearFeedScreenBtn.Name = "ClearFeedScreenBtn";
-            this.ClearFeedScreenBtn.Size = new System.Drawing.Size(75, 30);
+            this.ClearFeedScreenBtn.Size = new System.Drawing.Size(55, 24);
             this.ClearFeedScreenBtn.TabIndex = 30;
             this.ClearFeedScreenBtn.Text = "Clear";
             this.ClearFeedScreenBtn.UseVisualStyleBackColor = true;
@@ -433,9 +404,10 @@ namespace esp8266Commander
             // 
             // ChangeTextColorBtn
             // 
-            this.ChangeTextColorBtn.Location = new System.Drawing.Point(93, 295);
+            this.ChangeTextColorBtn.Location = new System.Drawing.Point(70, 260);
+            this.ChangeTextColorBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ChangeTextColorBtn.Name = "ChangeTextColorBtn";
-            this.ChangeTextColorBtn.Size = new System.Drawing.Size(115, 30);
+            this.ChangeTextColorBtn.Size = new System.Drawing.Size(85, 24);
             this.ChangeTextColorBtn.TabIndex = 31;
             this.ChangeTextColorBtn.Text = "Text Color";
             this.ChangeTextColorBtn.UseVisualStyleBackColor = true;
@@ -443,9 +415,10 @@ namespace esp8266Commander
             // 
             // ChangeBckgndColorBtn
             // 
-            this.ChangeBckgndColorBtn.Location = new System.Drawing.Point(215, 295);
+            this.ChangeBckgndColorBtn.Location = new System.Drawing.Point(160, 260);
+            this.ChangeBckgndColorBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ChangeBckgndColorBtn.Name = "ChangeBckgndColorBtn";
-            this.ChangeBckgndColorBtn.Size = new System.Drawing.Size(118, 30);
+            this.ChangeBckgndColorBtn.Size = new System.Drawing.Size(90, 24);
             this.ChangeBckgndColorBtn.TabIndex = 32;
             this.ChangeBckgndColorBtn.Text = "Backgnd Color";
             this.ChangeBckgndColorBtn.UseVisualStyleBackColor = true;
@@ -453,9 +426,9 @@ namespace esp8266Commander
             // 
             // param1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 475);
+            this.ClientSize = new System.Drawing.Size(439, 431);
             this.Controls.Add(this.ChangeBckgndColorBtn);
             this.Controls.Add(this.ChangeTextColorBtn);
             this.Controls.Add(this.ClearFeedScreenBtn);
@@ -490,7 +463,6 @@ namespace esp8266Commander
             this.Controls.Add(this.baudRateBox);
             this.Controls.Add(this.comPortBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "param1";
             this.Text = "ESP8266 Commander v1.0";
             this.ResumeLayout(false);
@@ -514,7 +486,7 @@ namespace esp8266Commander
         private void InitializeComPortBox()
         {
             var portNames = SerialPort.GetPortNames();
-            if (portNames != null)
+            if (portNames.Length > 0)
             {
                 comPortBox.Items.Clear();
                 comPortBox.Items.AddRange(portNames);
