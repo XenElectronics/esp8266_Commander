@@ -18,15 +18,13 @@ namespace esp8266Commander
         private string rxString;
         private bool connected = false;
 
-        private Color defaultTextColor = Color.Black;
-        private Color defaultBackColor = Color.White;
-
         private string[] textBoxPlaceholder = new string[4];
 
         public param1()
         {
             InitializeComponent();
             InitializeCommandList();
+            InitializeComPortBox();
             InitializeBaudRateBox();
             InitializeAdvancedCommandBox();
         }

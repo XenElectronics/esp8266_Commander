@@ -505,8 +505,26 @@ namespace esp8266Commander
 
         private void InitializeBaudRateBox()
         {
-            string[] baudRates = new string[] { "300", "1200", "2400", "4800", "9600", "14400", "19200", "28800", "38400", "57600", "115200", "230400" };
+            string[] baudRates = new string[]
+            {"300", "1200", "2400", "4800", "9600", "14400", "19200", "28800", "38400", "57600", "115200", "230400"};
             baudRateBox.Items.AddRange(baudRates);
+            baudRateBox.SelectedItem = "115200";
+        }
+
+        private void InitializeComPortBox()
+        {
+            var portNames = SerialPort.GetPortNames();
+            if (portNames != null)
+            {
+                comPortBox.Items.Clear();
+                comPortBox.Items.AddRange(portNames);
+                comPortBox.SelectedItem = portNames[0]; // first found device will be set as default
+            }
+            else
+            {
+                comPortBox.Items.Clear();
+                comPortBox.Text = "COM Port";
+            }
         }
 
         private void InitializeAdvancedCommandBox()
