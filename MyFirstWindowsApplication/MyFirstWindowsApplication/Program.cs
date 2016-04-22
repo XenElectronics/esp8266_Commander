@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MyFirstWindowsApplication
+namespace esp8266Commander
 {
     static class Program
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyFirstWindowsApplication
+namespace esp8266Commander
 {
     public class command
     {
