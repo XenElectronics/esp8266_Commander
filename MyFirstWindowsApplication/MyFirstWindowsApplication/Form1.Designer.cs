@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Linq;
 namespace MyFirstWindowsApplication
 {
-    partial class Form1
+    partial class param1
     {
         private List<command> commandsList = new List<command>();
         /// <summary>
@@ -55,13 +55,17 @@ namespace MyFirstWindowsApplication
             this.statusLabel = new System.Windows.Forms.Label();
             this.advancedCommandBox = new System.Windows.Forms.ComboBox();
             this.commandTypeBox = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.functionTitle = new System.Windows.Forms.Label();
             this.functionLabel = new System.Windows.Forms.Label();
             this.parametersNameLabel = new System.Windows.Forms.Label();
             this.parametersLabel = new System.Windows.Forms.Label();
-            this.descriptionTitleLabel = new System.Windows.Forms.Label();
-            this.descriptionLabel = new System.Windows.Forms.Label();
+            this.responseTitle = new System.Windows.Forms.Label();
+            this.responseLabel = new System.Windows.Forms.Label();
+            this.paramBox1 = new System.Windows.Forms.TextBox();
+            this.paramBox2 = new System.Windows.Forms.TextBox();
+            this.paramBox3 = new System.Windows.Forms.TextBox();
+            this.paramBox4 = new System.Windows.Forms.TextBox();
+            this.executeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // serialPort
@@ -98,9 +102,9 @@ namespace MyFirstWindowsApplication
             // 
             // feedBox
             // 
-            this.feedBox.Location = new System.Drawing.Point(12, 356);
+            this.feedBox.Location = new System.Drawing.Point(12, 253);
             this.feedBox.Name = "feedBox";
-            this.feedBox.Size = new System.Drawing.Size(431, 96);
+            this.feedBox.Size = new System.Drawing.Size(431, 125);
             this.feedBox.TabIndex = 3;
             this.feedBox.Text = "";
             // 
@@ -251,7 +255,7 @@ namespace MyFirstWindowsApplication
             this.advancedCommandBox.FormattingEnabled = true;
             this.advancedCommandBox.Location = new System.Drawing.Point(12, 130);
             this.advancedCommandBox.Name = "advancedCommandBox";
-            this.advancedCommandBox.Size = new System.Drawing.Size(121, 21);
+            this.advancedCommandBox.Size = new System.Drawing.Size(105, 21);
             this.advancedCommandBox.TabIndex = 17;
             this.advancedCommandBox.Text = "Command";
             this.advancedCommandBox.SelectedIndexChanged += new System.EventHandler(this.commandChange);
@@ -259,27 +263,18 @@ namespace MyFirstWindowsApplication
             // commandTypeBox
             // 
             this.commandTypeBox.FormattingEnabled = true;
-            this.commandTypeBox.Location = new System.Drawing.Point(139, 130);
+            this.commandTypeBox.Location = new System.Drawing.Point(123, 130);
             this.commandTypeBox.Name = "commandTypeBox";
-            this.commandTypeBox.Size = new System.Drawing.Size(98, 21);
+            this.commandTypeBox.Size = new System.Drawing.Size(69, 21);
             this.commandTypeBox.TabIndex = 18;
             this.commandTypeBox.Text = "Type";
             this.commandTypeBox.SelectedIndexChanged += new System.EventHandler(this.commandTypeBox_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(145, 113);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Command Type:";
             // 
             // functionTitle
             // 
             this.functionTitle.AutoSize = true;
             this.functionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.functionTitle.Location = new System.Drawing.Point(12, 167);
+            this.functionTitle.Location = new System.Drawing.Point(12, 154);
             this.functionTitle.Name = "functionTitle";
             this.functionTitle.Size = new System.Drawing.Size(60, 13);
             this.functionTitle.TabIndex = 20;
@@ -289,7 +284,7 @@ namespace MyFirstWindowsApplication
             // functionLabel
             // 
             this.functionLabel.AutoSize = true;
-            this.functionLabel.Location = new System.Drawing.Point(72, 167);
+            this.functionLabel.Location = new System.Drawing.Point(72, 154);
             this.functionLabel.Name = "functionLabel";
             this.functionLabel.Size = new System.Drawing.Size(71, 13);
             this.functionLabel.TabIndex = 21;
@@ -309,46 +304,100 @@ namespace MyFirstWindowsApplication
             // parametersLabel
             // 
             this.parametersLabel.AutoSize = true;
-            this.parametersLabel.Location = new System.Drawing.Point(86, 180);
+            this.parametersLabel.Location = new System.Drawing.Point(85, 180);
             this.parametersLabel.Name = "parametersLabel";
             this.parametersLabel.Size = new System.Drawing.Size(85, 13);
             this.parametersLabel.TabIndex = 22;
             this.parametersLabel.Text = "parametersLabel";
             this.parametersLabel.Visible = false;
             // 
-            // descriptionTitleLabel
+            // responseTitle
             // 
-            this.descriptionTitleLabel.AutoSize = true;
-            this.descriptionTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionTitleLabel.Location = new System.Drawing.Point(12, 154);
-            this.descriptionTitleLabel.Name = "descriptionTitleLabel";
-            this.descriptionTitleLabel.Size = new System.Drawing.Size(75, 13);
-            this.descriptionTitleLabel.TabIndex = 23;
-            this.descriptionTitleLabel.Text = "Description:";
-            this.descriptionTitleLabel.Visible = false;
+            this.responseTitle.AutoSize = true;
+            this.responseTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.responseTitle.Location = new System.Drawing.Point(12, 167);
+            this.responseTitle.Name = "responseTitle";
+            this.responseTitle.Size = new System.Drawing.Size(67, 13);
+            this.responseTitle.TabIndex = 23;
+            this.responseTitle.Text = "Response:";
+            this.responseTitle.Visible = false;
             // 
-            // descriptionLabel
+            // responseLabel
             // 
-            this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Location = new System.Drawing.Point(86, 154);
-            this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(84, 13);
-            this.descriptionLabel.TabIndex = 24;
-            this.descriptionLabel.Text = "descriptionLabel";
-            this.descriptionLabel.Visible = false;
+            this.responseLabel.AutoSize = true;
+            this.responseLabel.Location = new System.Drawing.Point(76, 167);
+            this.responseLabel.Name = "responseLabel";
+            this.responseLabel.Size = new System.Drawing.Size(76, 13);
+            this.responseLabel.TabIndex = 24;
+            this.responseLabel.Text = "responseLabel";
+            this.responseLabel.Visible = false;
             // 
-            // Form1
+            // paramBox1
+            // 
+            this.paramBox1.Enabled = false;
+            this.paramBox1.Location = new System.Drawing.Point(198, 131);
+            this.paramBox1.Name = "paramBox1";
+            this.paramBox1.Size = new System.Drawing.Size(37, 20);
+            this.paramBox1.TabIndex = 25;
+            this.paramBox1.Enter += new System.EventHandler(this.paramBox1_Enter);
+            this.paramBox1.Leave += new System.EventHandler(this.paramBox1_Leave);
+            // 
+            // paramBox2
+            // 
+            this.paramBox2.Enabled = false;
+            this.paramBox2.Location = new System.Drawing.Point(241, 131);
+            this.paramBox2.Name = "paramBox2";
+            this.paramBox2.Size = new System.Drawing.Size(37, 20);
+            this.paramBox2.TabIndex = 26;
+            this.paramBox2.Enter += new System.EventHandler(this.paramBox2_Enter);
+            this.paramBox2.Leave += new System.EventHandler(this.paramBox2_Leave);
+            // 
+            // paramBox3
+            // 
+            this.paramBox3.Enabled = false;
+            this.paramBox3.Location = new System.Drawing.Point(284, 131);
+            this.paramBox3.Name = "paramBox3";
+            this.paramBox3.Size = new System.Drawing.Size(37, 20);
+            this.paramBox3.TabIndex = 27;
+            this.paramBox3.Enter += new System.EventHandler(this.paramBox3_Enter);
+            this.paramBox3.Leave += new System.EventHandler(this.paramBox3_Leave);
+            // 
+            // paramBox4
+            // 
+            this.paramBox4.Enabled = false;
+            this.paramBox4.Location = new System.Drawing.Point(327, 131);
+            this.paramBox4.Name = "paramBox4";
+            this.paramBox4.Size = new System.Drawing.Size(37, 20);
+            this.paramBox4.TabIndex = 28;
+            this.paramBox4.Enter += new System.EventHandler(this.paramBox4_Enter);
+            this.paramBox4.Leave += new System.EventHandler(this.paramBox4_Leave);
+            // 
+            // executeBtn
+            // 
+            this.executeBtn.Location = new System.Drawing.Point(370, 130);
+            this.executeBtn.Name = "executeBtn";
+            this.executeBtn.Size = new System.Drawing.Size(70, 23);
+            this.executeBtn.TabIndex = 29;
+            this.executeBtn.Text = "Execute";
+            this.executeBtn.UseVisualStyleBackColor = true;
+            this.executeBtn.Click += new System.EventHandler(this.executeBtn_Click);
+            // 
+            // param1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 464);
-            this.Controls.Add(this.descriptionLabel);
-            this.Controls.Add(this.descriptionTitleLabel);
+            this.ClientSize = new System.Drawing.Size(453, 390);
+            this.Controls.Add(this.executeBtn);
+            this.Controls.Add(this.paramBox4);
+            this.Controls.Add(this.paramBox3);
+            this.Controls.Add(this.paramBox2);
+            this.Controls.Add(this.paramBox1);
+            this.Controls.Add(this.responseLabel);
+            this.Controls.Add(this.responseTitle);
             this.Controls.Add(this.parametersLabel);
             this.Controls.Add(this.parametersNameLabel);
             this.Controls.Add(this.functionLabel);
             this.Controls.Add(this.functionTitle);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.commandTypeBox);
             this.Controls.Add(this.advancedCommandBox);
             this.Controls.Add(this.statusLabel);
@@ -368,7 +417,7 @@ namespace MyFirstWindowsApplication
             this.Controls.Add(this.connectButton);
             this.Controls.Add(this.baudRateBox);
             this.Controls.Add(this.comPortBox);
-            this.Name = "Form1";
+            this.Name = "param1";
             this.Text = "ESP8266 Commander";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -413,13 +462,17 @@ namespace MyFirstWindowsApplication
         private Label statusLabel;
         private ComboBox advancedCommandBox;
         private ComboBox commandTypeBox;
-        private Label label4;
         private Label functionTitle;
         private Label functionLabel;
         private Label parametersNameLabel;
         private Label parametersLabel;
-        private Label descriptionTitleLabel;
-        private Label descriptionLabel;
+        private Label responseTitle;
+        private Label responseLabel;
+        private TextBox paramBox1;
+        private TextBox paramBox2;
+        private TextBox paramBox3;
+        private TextBox paramBox4;
+        private Button executeBtn;
     }
 }
 

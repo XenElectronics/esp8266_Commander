@@ -11,14 +11,16 @@ using System.IO.Ports;
 
 namespace MyFirstWindowsApplication
 {
-    public partial class Form1 : Form
+    public partial class param1 : Form
     {
         private command selectedCommand;
         private type selectedType;
         private string rxString;
         private bool connected = false;
 
-        public Form1()
+        private string[] textBoxPlaceholder = new string[4];
+
+        public param1()
         {
             InitializeComponent();
             InitializeCommandList();
@@ -34,15 +36,6 @@ namespace MyFirstWindowsApplication
             var types = selectedCommand.types.Select(s => s.variant);
             commandTypeBox.Items.AddRange(listOfEnumsToListOfStrings(types).ToArray());
             commandTypeBox.SelectedIndex = 0;
-            if (selectedCommand.description != null)
-            {
-                descriptionTitleLabel.Visible = true;
-                descriptionLabel.Visible = true;
-            }
-            else{
-                descriptionTitleLabel.Visible = false;
-                descriptionLabel.Visible = false;
-            }
         }
 
         private List<string> listOfEnumsToListOfStrings(IEnumerable<commandType> enumsList)
@@ -87,6 +80,31 @@ namespace MyFirstWindowsApplication
                 parametersLabel.Visible = false;
                 parametersNameLabel.Visible = false;
             }
+
+            if (selectedType.response != null)
+            {
+                responseTitle.Visible = true;
+                responseLabel.Text = selectedType.response;
+                responseLabel.Visible = true;
+            }
+            else
+            {
+                responseTitle.Visible = false;
+                responseLabel.Visible = false;
+            }
+
+            if (selectedType.variant == commandType.Set)
+            {
+                enableParamBoxes(false);
+                for (int i = 0; i < selectedType.parameters.Count; i++)
+                {
+                    enableParamBox(i, selectedType.parameters.ElementAt(i).name);
+                }
+            }
+            else
+            {
+                enableParamBoxes(false);
+            }
         }
 
         private void connectButton_Click(object sender, EventArgs e)
@@ -116,10 +134,50 @@ namespace MyFirstWindowsApplication
             }
         }
 
+        private void enableParamBox(int id, string paramName)
+        {
+            textBoxPlaceholder[id] = paramName;
+            switch (id)
+            {
+                case 0:
+                    paramBox1.Enabled = true;
+                    paramBox1.Text = paramName;
+                    break;
+                case 1:
+                    paramBox2.Enabled = true;
+                    paramBox2.Text = paramName;
+                    break;
+                case 2:
+                    paramBox3.Enabled = true;
+                    paramBox3.Text = paramName;
+                    break;
+                case 3:
+                    paramBox4.Enabled = true;
+                    paramBox4.Text = paramName;
+                    break;
+            }
+        }
+
+        private void enableParamBoxes(bool enabled)
+        {
+            paramBox1.Text = null;
+            paramBox2.Text = null;
+            paramBox3.Text = null;
+            paramBox4.Text = null;
+            paramBox1.Enabled = enabled;
+            paramBox2.Enabled = enabled;
+            paramBox3.Enabled = enabled;
+            paramBox4.Enabled = enabled;
+            for (int i = 0; i < 4; i++)
+            {
+                textBoxPlaceholder[i] = "";
+            }
+        }
+
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             rxString = serialPort.ReadExisting();
-            this.Invoke(new EventHandler(displayText));  
+            this.Invoke(new EventHandler(displayText));
         }
 
         private void displayText(object sender, EventArgs e)
@@ -150,7 +208,7 @@ namespace MyFirstWindowsApplication
 
         private void ATRST_Click(object sender, EventArgs e)
         {
-            serialWriteBasic(ATRST.Text);   
+            serialWriteBasic(ATRST.Text);
         }
 
         private void ATGMR_Click(object sender, EventArgs e)
@@ -199,6 +257,148 @@ namespace MyFirstWindowsApplication
             {
                 serialPort.Write(atCommand + "\r\n");
             }
+        }
+
+        private void paramBox1_Enter(object sender, EventArgs e)
+        {
+            if (paramBox1.Text == textBoxPlaceholder[0])
+            {
+                paramBox1.Text = "";
+            }
+        }
+
+        private void paramBox2_Enter(object sender, EventArgs e)
+        {
+            if (paramBox2.Text == textBoxPlaceholder[1])
+            {
+                paramBox2.Text = "";
+                if (textBoxPlaceholder[1] == "pwd")
+                {
+                    paramBox2.UseSystemPasswordChar = true;
+                }
+            }
+        }
+
+        private void paramBox3_Enter(object sender, EventArgs e)
+        {
+            if (paramBox3.Text == textBoxPlaceholder[2])
+            {
+                paramBox3.Text = "";
+            }
+        }
+
+        private void paramBox4_Enter(object sender, EventArgs e)
+        {
+            if (paramBox4.Text == textBoxPlaceholder[3])
+            {
+                paramBox4.Text = "";
+            }
+        }
+
+        private void paramBox1_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(paramBox1.Text))
+            {
+                paramBox1.Text = textBoxPlaceholder[0];
+            }
+        }
+
+        private void paramBox2_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(paramBox2.Text))
+            {
+                paramBox2.Text = textBoxPlaceholder[1];
+                paramBox2.UseSystemPasswordChar = false;
+            }
+        }
+
+        private void paramBox3_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(paramBox3.Text))
+            {
+                paramBox3.Text = textBoxPlaceholder[2];
+            }
+        }
+
+        private void paramBox4_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(paramBox4.Text))
+            {
+                paramBox4.Text = textBoxPlaceholder[3];
+            }
+        }
+
+        private void executeBtn_Click(object sender, EventArgs e)
+        {
+            if (connected && selectedCommand != null)
+            {
+                switch (selectedType.variant)
+                {
+                    case commandType.Execute:
+                        serialPort.Write(selectedCommand.name + "\r\n");
+                        break;
+                    case commandType.Query:
+                        serialPort.Write(selectedCommand.name + "?\r\n");
+                        break;
+                    case commandType.Set:
+                        string commandString = selectedCommand.name + "=";
+                        for (int i = 0; i < selectedType.parameters.Count; i++)
+                        {
+                            if(i != 0)
+                            {
+                                commandString += ",";
+                            }
+
+                            switch (selectedType.parameters.ElementAt(i).typeP)
+                            {
+                                case parameterType.intP:
+                                    commandString += getTextBoxInt(i);
+                                    break;
+                                case parameterType.stringP:
+                                    commandString += "\"" + getTextBoxString(i) + "\"";
+                                    break;
+                            }
+                        }
+                        commandString += "\r\n";
+                        serialPort.Write(commandString);
+                        break;
+                    case commandType.Test:
+                        serialPort.Write(selectedCommand.name + "=?\r\n");
+                        break;
+                }
+            }
+        }
+
+        private int getTextBoxInt(int id)
+        {
+            switch (id)
+            {
+                case 0:
+                    return int.Parse(paramBox1.Text);
+                case 1:
+                    return int.Parse(paramBox2.Text);
+                case 2:
+                    return int.Parse(paramBox3.Text);
+                case 3:
+                    return int.Parse(paramBox4.Text);
+            }
+            return 0;
+        }
+
+        private string getTextBoxString(int id)
+        {
+            switch (id)
+            {
+                case 0:
+                    return paramBox1.Text;
+                case 1:
+                    return paramBox2.Text;
+                case 2:
+                    return paramBox3.Text;
+                case 3:
+                    return paramBox4.Text;
+            }
+            return "";
         }
     }
 }
