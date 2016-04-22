@@ -18,6 +18,9 @@ namespace esp8266Commander
         private string rxString;
         private bool connected = false;
 
+        private Color defaultTextColor = Color.Black;
+        private Color defaultBackColor = Color.White;
+
         private string[] textBoxPlaceholder = new string[4];
 
         public param1()
@@ -405,6 +408,35 @@ namespace esp8266Commander
                     return paramBox4.Text;
             }
             return "";
+        }
+
+        private void ClearFeedScreenBtn_Click(object sender, EventArgs e)
+        {
+            feedBox.Clear();
+        }
+
+        private void ChangeThemeBtn_Click(object sender, EventArgs e)
+        {
+            // get orginal previous color:
+            ColorPicker.Color = feedBox.ForeColor;
+
+            // get new color from dialog:
+            if (ColorPicker.ShowDialog() == DialogResult.OK)
+            {
+                feedBox.ForeColor = ColorPicker.Color;
+            }
+        }
+
+        private void ChangeBckgndColorBtn_Click(object sender, EventArgs e)
+        {
+            // get orginal previous color:
+            ColorPicker.Color = feedBox.BackColor;
+
+            // get new color from dialog:
+            if (ColorPicker.ShowDialog() == DialogResult.OK)
+            {
+                feedBox.BackColor = ColorPicker.Color;
+            }
         }
     }
 }
