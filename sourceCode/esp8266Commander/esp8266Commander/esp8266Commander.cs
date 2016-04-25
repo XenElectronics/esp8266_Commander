@@ -411,6 +411,7 @@ namespace esp8266Commander
         private void ClearFeedScreenBtn_Click(object sender, EventArgs e)
         {
             feedBox.Clear();
+            transmitBox.Clear();
         }
 
         private void ChangeThemeBtn_Click(object sender, EventArgs e)
@@ -422,6 +423,7 @@ namespace esp8266Commander
             if (ColorPicker.ShowDialog() == DialogResult.OK)
             {
                 feedBox.ForeColor = ColorPicker.Color;
+                transmitBox.ForeColor = ColorPicker.Color;
             }
         }
 
@@ -434,7 +436,30 @@ namespace esp8266Commander
             if (ColorPicker.ShowDialog() == DialogResult.OK)
             {
                 feedBox.BackColor = ColorPicker.Color;
+                transmitBox.BackColor = ColorPicker.Color;
             }
+        }
+
+        private void transmitButton_Click(object sender, EventArgs e)
+        {
+            if (connected)
+            {
+                serialPort.Write(transmitBox.Text + "\r\n");
+                transmitBox.Clear();
+            }
+        }
+
+        private void transmit() {
+            if (connected)
+            {
+                serialPort.Write(transmitBox.Text + "\r\n");
+                transmitBox.Clear();
+            }
+        }
+
+        private void transmitBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) transmit(); 
         }
     }
 }

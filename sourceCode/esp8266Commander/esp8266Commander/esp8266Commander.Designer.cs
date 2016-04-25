@@ -71,6 +71,8 @@ namespace esp8266Commander
             this.ChangeTextColorBtn = new System.Windows.Forms.Button();
             this.ColorPicker = new System.Windows.Forms.ColorDialog();
             this.ChangeBckgndColorBtn = new System.Windows.Forms.Button();
+            this.transmitBox = new System.Windows.Forms.RichTextBox();
+            this.transmitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // serialPort
@@ -110,9 +112,9 @@ namespace esp8266Commander
             // 
             // feedBox
             // 
-            this.feedBox.Location = new System.Drawing.Point(10, 289);
+            this.feedBox.Location = new System.Drawing.Point(10, 290);
             this.feedBox.Name = "feedBox";
-            this.feedBox.Size = new System.Drawing.Size(420, 130);
+            this.feedBox.Size = new System.Drawing.Size(420, 100);
             this.feedBox.TabIndex = 3;
             this.feedBox.Text = "";
             // 
@@ -394,7 +396,7 @@ namespace esp8266Commander
             // ClearFeedScreenBtn
             // 
             this.ClearFeedScreenBtn.Location = new System.Drawing.Point(10, 260);
-            this.ClearFeedScreenBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClearFeedScreenBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ClearFeedScreenBtn.Name = "ClearFeedScreenBtn";
             this.ClearFeedScreenBtn.Size = new System.Drawing.Size(55, 24);
             this.ClearFeedScreenBtn.TabIndex = 30;
@@ -405,7 +407,7 @@ namespace esp8266Commander
             // ChangeTextColorBtn
             // 
             this.ChangeTextColorBtn.Location = new System.Drawing.Point(70, 260);
-            this.ChangeTextColorBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ChangeTextColorBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ChangeTextColorBtn.Name = "ChangeTextColorBtn";
             this.ChangeTextColorBtn.Size = new System.Drawing.Size(85, 24);
             this.ChangeTextColorBtn.TabIndex = 31;
@@ -416,7 +418,7 @@ namespace esp8266Commander
             // ChangeBckgndColorBtn
             // 
             this.ChangeBckgndColorBtn.Location = new System.Drawing.Point(160, 260);
-            this.ChangeBckgndColorBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ChangeBckgndColorBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ChangeBckgndColorBtn.Name = "ChangeBckgndColorBtn";
             this.ChangeBckgndColorBtn.Size = new System.Drawing.Size(90, 24);
             this.ChangeBckgndColorBtn.TabIndex = 32;
@@ -424,11 +426,32 @@ namespace esp8266Commander
             this.ChangeBckgndColorBtn.UseVisualStyleBackColor = true;
             this.ChangeBckgndColorBtn.Click += new System.EventHandler(this.ChangeBckgndColorBtn_Click);
             // 
+            // transmitBox
+            // 
+            this.transmitBox.Location = new System.Drawing.Point(10, 395);
+            this.transmitBox.Name = "transmitBox";
+            this.transmitBox.Size = new System.Drawing.Size(340, 20);
+            this.transmitBox.TabIndex = 34;
+            this.transmitBox.Text = "";
+            this.transmitBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.transmitBox_KeyDown);
+            // 
+            // transmitButton
+            // 
+            this.transmitButton.Location = new System.Drawing.Point(355, 393);
+            this.transmitButton.Name = "transmitButton";
+            this.transmitButton.Size = new System.Drawing.Size(75, 22);
+            this.transmitButton.TabIndex = 35;
+            this.transmitButton.Text = "Transmit";
+            this.transmitButton.UseVisualStyleBackColor = true;
+            this.transmitButton.Click += new System.EventHandler(this.transmitButton_Click);
+            // 
             // param1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 431);
+            this.ClientSize = new System.Drawing.Size(439, 422);
+            this.Controls.Add(this.transmitButton);
+            this.Controls.Add(this.transmitBox);
             this.Controls.Add(this.ChangeBckgndColorBtn);
             this.Controls.Add(this.ChangeTextColorBtn);
             this.Controls.Add(this.ClearFeedScreenBtn);
@@ -541,6 +564,8 @@ namespace esp8266Commander
         private Button ChangeTextColorBtn;
         private ColorDialog ColorPicker;
         private Button ChangeBckgndColorBtn;
+        private RichTextBox transmitBox;
+        private Button transmitButton;
     }
 }
 
